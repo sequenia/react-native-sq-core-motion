@@ -43,6 +43,16 @@ class SQCoreMotionManager {
         self.onStart()
     }
 
+    private func checkAuthorizationStatus() {
+        switch CMMotionActivityManager.authorizationStatus() {
+        case CMAuthorizationStatus.denied:
+            onStop()
+            self.activityTypeHandler?(.notAvailable)
+            self.stepCountHandler?(0)
+        default:break
+        }
+    }
+
     private func onStart() {
         if startDate != nil { return }
 
@@ -51,7 +61,7 @@ class SQCoreMotionManager {
         startUpdating()
     }
 
-    private func onStop() {
+    func onStop() {
         self.startDate = nil
         self.stopUpdating()
 
@@ -71,16 +81,6 @@ class SQCoreMotionManager {
             startCountingSteps()
         } else {
             self.stepCountHandler?(0)
-        }
-    }
-
-    private func checkAuthorizationStatus() {
-        switch CMMotionActivityManager.authorizationStatus() {
-        case CMAuthorizationStatus.denied:
-            onStop()
-            self.activityTypeHandler?(.notAvailable)
-            self.stepCountHandler?(0)
-        default:break
         }
     }
 
@@ -141,4 +141,3 @@ class SQCoreMotionManager {
     }
 
 }
-

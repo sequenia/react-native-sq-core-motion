@@ -1,41 +1,44 @@
-require "json"
+require 'json'
 
-package = JSON.parse(File.read(File.join(__dir__, "package.json")))
-folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
+package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
 Pod::Spec.new do |s|
+
   s.name         = "react-native-sq-core-motion"
-  s.version      = package["version"]
-  s.summary      = package["description"]
-  s.homepage     = package["homepage"]
-  s.license      = package["license"]
-  s.authors      = package["author"]
+  s.version      = package['version']
+  s.summary      = package['description']
+  s.license      = package['license']
+  s.author       = package['author']
+  s.homepage     = package['homepage']
+  s.license = { :type => 'MIT', :text => <<-LICENSE
+                     MIT License
+                     Permission is hereby granted, free of charge, to any person obtaining a copy
+                     of this software and associated documentation files (the "Software"), to deal
+                     in the Software without restriction, including without limitation the rights
+                     to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                     copies of the Software, and to permit persons to whom the Software is
+                     furnished to do so, subject to the following conditions:
+                     The above copyright notice and this permission notice shall be included in all
+                     copies or substantial portions of the Software.
+                     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                     AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                     SOFTWARE.
+                     LICENSE
+                   }
 
-  s.platforms    = { :ios => min_ios_version_supported }
-  s.source       = { :git => "https://github.com/sequenia/react-native-sq-core-motion.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.platform = :ios, '11.0'
 
-  # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
-  # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
-  if respond_to?(:install_modules_dependencies, true)
-    install_modules_dependencies(s)
-  else
-    s.dependency "React-Core"
+  s.source = { :git => "https://github.com/sequenia/react-native-sq-core-motion.git", :tag => "#{s.version}" }
 
-    # Don't install the dependencies when we run `pod install` in the old architecture.
-    if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
-      s.compiler_flags = folly_compiler_flags + " -DRCT_NEW_ARCH_ENABLED=1"
-      s.pod_target_xcconfig    = {
-          "HEADER_SEARCH_PATHS" => "\"$(PODS_ROOT)/boost\"",
-          "OTHER_CPLUSPLUSFLAGS" => "-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1",
-          "CLANG_CXX_LANGUAGE_STANDARD" => "c++17"
-      }
-      s.dependency "React-Codegen"
-      s.dependency "RCT-Folly"
-      s.dependency "RCTRequired"
-      s.dependency "RCTTypeSafety"
-      s.dependency "ReactCommon/turbomodule/core"
-    end
-  end
+  s.preserve_paths = 'LICENSE'
+  s.ios.deployment_target = '11.0'
+  s.source_files = "ios/**/*.{h,m,swift}"
+
+  s.dependency 'React'
+
 end

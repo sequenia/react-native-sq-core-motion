@@ -10,7 +10,7 @@ class SQCoreMotion: RCTEventEmitter {
     override init() {
         super.init()
 
-        RNHealthTracker.emitter = self
+        SQCoreMotion.emitter = self
     }
 
     @objc
@@ -28,21 +28,49 @@ class SQCoreMotion: RCTEventEmitter {
     }
 
     @objc public func subscribeStepCount(
-            resolve: @escaping RCTPromiseResolveBlock,
+            _ resolve: @escaping RCTPromiseResolveBlock,
             reject: @escaping RCTPromiseRejectBlock
     ) {
         self.coreMotionManager
             .subscribeStepCount { stepCount in
-                RNHealthTracker.emitter?.sendEvent(
+                SQCoreMotion.emitter?.sendEvent(
                     withName: "update_step_count",
-                    body: [stepCount]
+                    body: stepCount
                 )
             } activityTypeHandler: { activityType in
-                RNHealthTracker.emitter?.sendEvent(
+                SQCoreMotion.emitter?.sendEvent(
                     withName: "update_activity_type",
-                    body: [activityType.rawValue]
+                    body: activityType.rawValue
                 )
             }
-        resolve(true)
+        resolve(())
+    }
+
+    @objc public func subscribeDistance(
+            _ resolve: @escaping RCTPromiseResolveBlock,
+            reject: @escaping RCTPromiseRejectBlock
+    ) {
+        self.coreMotionManager
+            .subscribeDistance { distance in
+                SQCoreMotion.emitter?.sendEvent(
+                    withName: "update_distance",
+                    body: distance
+                )
+            }
+        resolve(())
+    }
+
+    @objc public func unSubscribeStepCount(
+        _ resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        self.coreMotionManager.onStop()
+    }
+
+    @objc public func unSubscribeDistance(
+        _ resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        self.coreMotionManager.onStop()
     }
 }

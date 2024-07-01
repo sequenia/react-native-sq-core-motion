@@ -2,10 +2,7 @@
   "name": "react-native-sq-core-motion",
   "version": "0.1.0",
   "description": "step counter",
-  "main": "lib/commonjs/index",
-  "module": "lib/module/index",
-  "types": "lib/typescript/src/index.d.ts",
-  "react-native": "src/index",
+  "main": "src/index.ts",
   "source": "src/index",
   "files": [
     "src",
@@ -89,11 +86,6 @@
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
     ]
   },
   "release-it": {
