@@ -5,7 +5,7 @@ step counter
 ## Installation
 
 ```sh
-npm install git@github.com:sequenia/react-native-sq-core-motion.git#0.1.3
+npm install git@github.com:sequenia/react-native-sq-core-motion.git#0.2.0
 ```
 
 ## Usage
