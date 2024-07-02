@@ -5,7 +5,7 @@ import { NativeEventEmitter } from 'react-native'
 const { SQCoreMotion } = NativeModules
 const EventEmitter = new NativeEventEmitter(SQCoreMotion)
 
-const subscribeDistance = async (
+export const subscribeDistance = async (
   callback: (distance: number) => void
 ): Promise<void> => {
   await SQCoreMotion.subscribeDistance()
@@ -14,5 +14,3 @@ const subscribeDistance = async (
     callback(distance)
   })
 }
-
-export default subscribeDistance
