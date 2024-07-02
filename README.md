@@ -5,27 +5,32 @@ step counter
 ## Installation
 
 ```sh
-npm install react-native-sq-core-motion
+npm install git@github.com:sequenia/react-native-sq-core-motion.git#0.1.3
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-sq-core-motion';
+import { SQCoreMotion } from "react-native-sq-core-motion"
 
 // ...
 
-const result = await multiply(3, 7);
+await SQCoreMotion.subscribeDistance(distance => {
+    this.distance = distance
+})
+
+// ...
+
+await SQCoreMotion.unSubscribeDistance()
+
+// ...
+
+await SQCoreMotion.subscribeStepCount(stepCount => {
+    this.stepCount = stepCount
+})
+
+// ...
+
+await SQCoreMotion.unSubscribeStepCount()
+
 ```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
