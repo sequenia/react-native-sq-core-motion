@@ -65,6 +65,7 @@ class SQCoreMotion: RCTEventEmitter {
         reject: @escaping RCTPromiseRejectBlock
     ) {
         self.coreMotionManager.onStop()
+        resolve(())
     }
 
     @objc public func unSubscribeDistance(
@@ -72,5 +73,6 @@ class SQCoreMotion: RCTEventEmitter {
         reject: @escaping RCTPromiseRejectBlock
     ) {
         self.coreMotionManager.onStop()
+        resolve(())
     }
 }

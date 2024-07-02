@@ -46,7 +46,7 @@ class SQCoreMotionManager {
     private func checkAuthorizationStatus() {
         switch CMMotionActivityManager.authorizationStatus() {
         case CMAuthorizationStatus.denied:
-            onStop()
+            self.onStop()
             self.activityTypeHandler?(.notAvailable)
             self.stepCountHandler?(0)
         default:break
@@ -57,8 +57,8 @@ class SQCoreMotionManager {
         if startDate != nil { return }
 
         startDate = Date()
-        checkAuthorizationStatus()
-        startUpdating()
+        self.checkAuthorizationStatus()
+        self.startUpdating()
     }
 
     func onStop() {
@@ -72,13 +72,13 @@ class SQCoreMotionManager {
 
     private func startUpdating() {
         if CMMotionActivityManager.isActivityAvailable() {
-            startTrackingActivityType()
+            self.startTrackingActivityType()
         } else {
             self.activityTypeHandler?(.notAvailable)
         }
 
         if CMPedometer.isStepCountingAvailable() {
-            startCountingSteps()
+            self.startCountingSteps()
         } else {
             self.stepCountHandler?(0)
         }
