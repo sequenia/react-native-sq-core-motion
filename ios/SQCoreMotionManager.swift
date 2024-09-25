@@ -94,20 +94,6 @@ class SQCoreMotionManager {
         //handle error
     }
 
-    private func updateStepsCountLabelUsing(startDate: Date) {
-        pedometer.queryPedometerData(from: startDate, to: Date()) {
-            [weak self] pedometerData, error in
-            if let error = error {
-                self?.on(error: error)
-            } else if let pedometerData = pedometerData {
-                DispatchQueue.main.async {
-                    self?.stepCountHandler?(pedometerData.numberOfSteps.intValue)
-                    self?.distanceHandler?(pedometerData.distance?.doubleValue ?? 0)
-                }
-            }
-        }
-    }
-
     private func startTrackingActivityType() {
         activityManager.startActivityUpdates(to: OperationQueue.main) {
             [weak self] (activity: CMMotionActivity?) in

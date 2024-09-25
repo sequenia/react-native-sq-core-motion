@@ -27,7 +27,8 @@ class SQCoreMotion: RCTEventEmitter {
       ]
     }
 
-    @objc public func subscribeStepCount(
+    @objc
+    public func subscribeStepCount(
             _ resolve: @escaping RCTPromiseResolveBlock,
             reject: @escaping RCTPromiseRejectBlock
     ) {
@@ -46,7 +47,8 @@ class SQCoreMotion: RCTEventEmitter {
         resolve(())
     }
 
-    @objc public func subscribeDistance(
+    @objc
+    public func subscribeDistance(
             _ resolve: @escaping RCTPromiseResolveBlock,
             reject: @escaping RCTPromiseRejectBlock
     ) {
@@ -60,7 +62,8 @@ class SQCoreMotion: RCTEventEmitter {
         resolve(())
     }
 
-    @objc public func unSubscribeStepCount(
+    @objc
+    public func unSubscribeStepCount(
         _ resolve: @escaping RCTPromiseResolveBlock,
         reject: @escaping RCTPromiseRejectBlock
     ) {
@@ -68,7 +71,8 @@ class SQCoreMotion: RCTEventEmitter {
         resolve(())
     }
 
-    @objc public func unSubscribeDistance(
+    @objc
+    public func unSubscribeDistance(
         _ resolve: @escaping RCTPromiseResolveBlock,
         reject: @escaping RCTPromiseRejectBlock
     ) {

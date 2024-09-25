@@ -1,6 +1,6 @@
 {
   "name": "react-native-sq-core-motion",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "step counter",
   "main": "src/index.ts",
   "source": "src/index",

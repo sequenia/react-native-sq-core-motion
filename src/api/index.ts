@@ -5,5 +5,6 @@
  */
 
 import * as SQCoreMotion from './SQCoreMotion';
+import * as SQFitnessStatistic from './SQFitnessStatistic';
 
-export { SQCoreMotion };
+export { SQCoreMotion, SQFitnessStatistic };
