@@ -20,4 +20,9 @@ RCT_EXTERN_METHOD(authorize:
                   (RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(authorizationStatus:
+                  (NSString*)type
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject)
+
 @end

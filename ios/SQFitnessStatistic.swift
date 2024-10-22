@@ -32,6 +32,20 @@ public class SQFitnessStatistic: NSObject {
     }
 
     @objc
+    public func authorizationStatus(
+        _ type: String,
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        guard let type = HKTypeData(rawValue: type) else {
+            resolve(false)
+            return
+        }
+
+        resolve(self.healthKitManager.authorizationStatus(for: type))
+    }
+
+    @objc
     public func getWorkoutData(
         _ type: String,
         startDate: String,
@@ -48,6 +62,10 @@ public class SQFitnessStatistic: NSObject {
 
         guard let type = WorkoutDataType(rawValue: type) else {
             reject(nil, "Invalide WorkoutDataType!", nil)
+            return
+        }
+
+        if !self.healthKitManager.authorizationStatus(for: .workout) {
             return
         }
 

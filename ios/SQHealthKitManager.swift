@@ -37,6 +37,13 @@ class SQHealthKitManager {
         }
     }
 
+    public func authorizationStatus(for readType: HKTypeData) -> Bool {
+        guard let objectType = self.transformDataKeyToHKSampleType(readType.rawValue) else { return false }
+        let status = self.healthStore.authorizationStatus(for: objectType)
+
+        return status == .sharingAuthorized
+    }
+
     public func queryWorkouts(
         _ workoutDataType: WorkoutDataType,
         start: Date,
