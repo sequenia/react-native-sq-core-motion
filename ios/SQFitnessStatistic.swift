@@ -21,7 +21,6 @@ public class SQFitnessStatistic: NSObject {
                 .workout,
                 .stepCount,
                 .distanceCycling,
-                .runningSpeed,
                 .distanceWalkingRunning
             ],
             complete: { resolve(true) },
