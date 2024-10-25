@@ -1,5 +1,5 @@
 import { NativeModules } from 'react-native';
-import FitnessDataType from "react-native-sq-core-motion/src/entity/FitnessDataType"
+import type FitnessDataType from '../../entity/FitnessDataType';
 
 /** @internal */
 const { SQFitnessStatistic } = NativeModules;
