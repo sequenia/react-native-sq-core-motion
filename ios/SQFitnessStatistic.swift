@@ -64,10 +64,6 @@ public class SQFitnessStatistic: NSObject {
             return
         }
 
-        if !self.healthKitManager.authorizationStatus(for: .workout) {
-            return
-        }
-
         self.healthKitManager.queryWorkouts(
             type,
             start: startDate,
