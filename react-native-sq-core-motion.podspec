@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
                    }
 
 
-  s.platform = :ios, '11.0'
+  s.platform = :ios, '15.0'
 
   s.source = { :git => "https://github.com/sequenia/react-native-sq-core-motion.git", :tag => "#{s.version}" }
 

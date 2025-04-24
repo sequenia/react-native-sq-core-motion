@@ -77,11 +77,19 @@ class SQHealthKitManager {
                 return
             }
 
-            let dataRecords: [Dictionary] = samples?.compactMap {
-                $0.convertToDictionary()
-            } ?? []
+          Task {
+            var dataRecords = [Dictionary<String, Any>]()
+
+            for sample in samples ?? [] {
+              guard let workout = await sample.convertToDictionary(
+                healthStore: self.healthStore
+              ) else { continue }
+
+              dataRecords.append(workout)
+            }
 
             complete(dataRecords)
+          }
         }
 
         self.healthStore.execute(query)

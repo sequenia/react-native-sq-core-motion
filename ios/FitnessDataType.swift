@@ -22,6 +22,7 @@ enum FitnessDataType: String {
     case stepCount = "HKQuantityTypeIdentifierStepCount"
     case swimmingStrokeCount = "HKQuantityTypeIdentifierSwimmingStrokeCount"
     case underwaterDepth = "HKQuantityTypeIdentifieUnderwaterDepth"
+    case heartRate = "HKQuantityTypeIdentifierHeartRate"
 
     func defaultUnit() -> String {
         if self == .distanceWalkingRunning {

@@ -23,4 +23,5 @@ enum HKTypeData: String {
     case appleStandTime = "HKQuantityTypeIdentifierAppleStandTime"
     case VO2Max = "HKQuantityTypeIdentifierVO2Max"
     case lowCardioFitnessEvent = "HKCategoryTypeIdentifierLowCardioFitnessEvent"
+    case heartRate = "HKQuantityTypeIdentifierHeartRate"
 }
