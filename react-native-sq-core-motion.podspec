@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
   s.source = { :git => "https://github.com/sequenia/react-native-sq-core-motion.git", :tag => "#{s.version}" }
 
   s.preserve_paths = 'LICENSE'
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '15.0'
   s.source_files = "ios/**/*.{h,m,swift}"
 
   s.dependency 'React'
